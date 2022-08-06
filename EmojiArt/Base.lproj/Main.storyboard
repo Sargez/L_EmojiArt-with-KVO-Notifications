@@ -199,9 +199,15 @@
                                     <segue destination="cTB-Cc-2Bd" kind="presentation" identifier="Show Document Info" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="rOH-Hh-f31"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem systemItem="camera" id="rPh-Kf-JqY">
+                                <connections>
+                                    <action selector="takeFoto:" destination="4Ue-wp-3By" id="J6b-AG-gqH"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cameraButton" destination="rPh-Kf-JqY" id="AGc-C0-vP7"/>
                         <outlet property="dropZoneView" destination="Dls-Sm-aKK" id="d5K-bX-ekU"/>
                         <outlet property="embeddedDocInfoHeight" destination="AW1-rI-aJX" id="dyn-Cm-3WN"/>
                         <outlet property="embeddedDocInfoWidth" destination="l2B-3l-r47" id="yPO-J3-kXj"/>
@@ -388,6 +394,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="HV7-Ik-CPj"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="EaJ-y3-dyv" firstAttribute="centerX" secondItem="Jv8-Pd-gi0" secondAttribute="centerX" id="0JZ-gg-VvO"/>

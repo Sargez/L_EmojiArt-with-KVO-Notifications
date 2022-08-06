@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 extension EmojiArt.EmojiInfo {
     init? (for label: UILabel) {
@@ -21,7 +22,7 @@ extension EmojiArt.EmojiInfo {
     }
 }
 
-class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource  , UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate, UIPopoverPresentationControllerDelegate {
+class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource  , UICollectionViewDelegateFlowLayout, UICollectionViewDragDelegate, UICollectionViewDropDelegate, UIPopoverPresentationControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
        
     // MARK: - Model
     
@@ -111,6 +112,40 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScr
         }
     }
     
+    @IBOutlet weak var cameraButton: UIBarButtonItem!{
+        didSet{
+            cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        }
+    }
+    @IBAction func takeFoto(_ sender: UIBarButtonItem) {
+    
+        let picker = UIImagePickerController()
+        picker.sourceType = .camera
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.mediaTypes = [kUTTypeImage as String]
+        
+        present(picker, animated: true)
+        
+    }
+    
+    // MARK: - ImagePickerController delegate's methods
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.presentingViewController?.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        if let image = ((info[.editedImage] ?? info[.originalImage]) as? UIImage) {
+            let url = image.storeLocallyAsJPEG(named: String(Date.timeIntervalSinceReferenceDate))
+            emojiArtBackGroundImage = (url, image)
+            documentChanged()
+        }
+        
+        picker.presentingViewController?.dismiss(animated: true)
+    }
+    
     // MARK: - ViewController life cycle
         
     private var documentObserver: NSObjectProtocol?
@@ -118,6 +153,8 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScr
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard document?.documentState != .normal else { return }
         
         documentObserver = NotificationCenter.default.addObserver(
             forName: UIDocument.stateChangedNotification,
@@ -132,18 +169,18 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScr
                 }
             }
         )
-
-//        MARK: implementation via file manager
-//        if let url = try? FileManager.default.url(for: .documentDirectory,
-//                                                  in: .userDomainMask,
-//                                                  appropriateFor: nil,
-//                                                  create: true).appendingPathComponent("Untitled.json") {
-//            if let jsonData = try? Data(contentsOf: url) {
-//                emojiArt = EmojiArt(json: jsonData)
-//            }
-//        }
         
-//      MARK: Implementation via UIDocument API
+        //        MARK: implementation via file manager
+        //        if let url = try? FileManager.default.url(for: .documentDirectory,
+        //                                                  in: .userDomainMask,
+        //                                                  appropriateFor: nil,
+        //                                                  create: true).appendingPathComponent("Untitled.json") {
+        //            if let jsonData = try? Data(contentsOf: url) {
+        //                emojiArt = EmojiArt(json: jsonData)
+        //            }
+        //        }
+        
+        //      MARK: Implementation via UIDocument API
         document?.open(completionHandler: { success in
             if success {
                 self.title = self.document?.localizedName
@@ -159,6 +196,7 @@ class EmojiArtViewController: UIViewController, UIDropInteractionDelegate, UIScr
             }
         })
         
+                
     }
     
     // MARK: - EmojiArtView delegate method's

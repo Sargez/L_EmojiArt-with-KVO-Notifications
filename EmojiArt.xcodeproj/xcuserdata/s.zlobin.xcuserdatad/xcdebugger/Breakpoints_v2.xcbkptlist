@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "50FAD881-7FAB-4607-9B92-625692DFEF28"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EmojiArt/EmojiArtViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "9AB78128-E26A-45FE-B4A8-25936F703C3B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -30,9 +14,9 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "viewWillAppear(_:)"
+            startingLineNumber = "199"
+            endingLineNumber = "199"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,8 +30,8 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
             landmarkName = "close(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +62,8 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "close(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -110,10 +94,10 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
-            landmarkName = "adaptivePresentationStyle(for:traitCollection:)"
-            landmarkType = "7">
+            startingLineNumber = "394"
+            endingLineNumber = "394"
+            landmarkName = "supressBadUrl"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,9 +110,9 @@
             filePath = "EmojiArt/EmojiArtViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "378"
-            endingLineNumber = "378"
-            landmarkName = "closeDocument(bySegue:)"
+            startingLineNumber = "416"
+            endingLineNumber = "416"
+            landmarkName = "presentBadUrlWarning(for:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
